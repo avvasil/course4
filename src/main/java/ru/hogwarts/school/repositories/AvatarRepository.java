@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface AvatarRepository extends PagingAndSortingRepository<Avatar, Long>, JpaRepository<Avatar, Long> {
+public interface AvatarRepository extends JpaRepository<Avatar, Long> {
 
     Optional<Avatar> findByStudentId(Long studentId);
 
