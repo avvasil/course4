@@ -1,10 +1,12 @@
 package ru.hogwarts.school.service;
 
+import jdk.dynalink.linker.LinkerServices;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repositories.StudentRepository;
 
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class StudentService {
@@ -39,6 +41,18 @@ public class StudentService {
 
     public Collection<Student> findStudentByFacultyId(Long faculty_id) {
         return studentRepository.findStudentByFacultyId(faculty_id);
+    }
+
+    public Long getAllStudentsUsingQuery() {
+        return studentRepository.getAllStudentsUsingQuery();
+    }
+
+    public Long getAvgAgeOfStudents() {
+        return studentRepository.getAvgAgeOfStudents();
+    }
+
+    public List<Student> getFiveLastStudents() {
+        return studentRepository.getFiveLastStudents();
     }
 
 }

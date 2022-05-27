@@ -6,6 +6,7 @@ import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.service.StudentService;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("student")
@@ -62,5 +63,20 @@ public class StudentController {
     @GetMapping("/faculty/{faculty_id}") //Получение студентов данного факультета
     public ResponseEntity<Collection<Student>> getStudentsByFacultyId(@PathVariable Long faculty_id) {
         return ResponseEntity.ok(studentService.findStudentByFacultyId(faculty_id));
+    }
+
+    @GetMapping("/getAllStudentsUsingQuery")
+    public Long getAllStudentsUsingQuery() {
+        return studentService.getAllStudentsUsingQuery();
+    }
+
+    @GetMapping("/getAvgAgeOfStudents")
+    public Long getAvgAgeOfStudents() {
+        return studentService.getAvgAgeOfStudents();
+    }
+
+    @GetMapping("/getFiveLastStudents")
+    public List<Student> getFiveLastStudents() {
+        return studentService.getFiveLastStudents();
     }
 }
