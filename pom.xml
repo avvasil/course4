@@ -11,8 +11,8 @@
     <groupId>ru.hogwarts</groupId>
     <artifactId>school</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>homework3.5</name>
-    <description>homework3.5</description>
+    <name>homework4.3</name>
+    <description>homework4.3</description>
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -43,6 +43,11 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
         </dependency>
 
         <dependency>
