@@ -11,8 +11,8 @@
     <groupId>ru.hogwarts</groupId>
     <artifactId>school</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>homework4.3</name>
-    <description>homework4.3</description>
+    <name>homework4.4</name>
+    <description>homework4.4</description>
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -35,6 +35,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-webmvc-core</artifactId>
+            <version>1.6.8</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>2.6.7</version>
@@ -49,6 +55,13 @@
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.26</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -78,6 +91,7 @@
             <scope>test</scope>
         </dependency>
 
+
     </dependencies>
 
 
@@ -88,6 +102,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+
         </plugins>
     </build>
 

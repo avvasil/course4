@@ -94,45 +94,45 @@ public class StudentControllerTest {
 //                .assertThat(this.restTemplate.delete("http://localhost:" + port + "/student/1", "id" , "1", Void.class));
 //    }
 
-    @Test
-    public void testGetStudentByAge() throws Exception {
-
-        student1.setId(id);
-        student1.setName(name1);
-        student1.setAge(age1);
-
-        Assertions
-                .assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/student/age/23", List.class))
-                .isNotEmpty();
-    }
-
-    @Test
-    public void testGetStudentByAgeBetweenMinAndMax() throws Exception {
-
-        student1.setId(id);
-        student1.setName(name1);
-        student1.setAge(age1);
-
-        Assertions
-                .assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/student", List.class, "minAge", 0, "maxAge",1000))
-                .isNotEmpty();
-    }
-
-    @Test
-    public void testGetStudentFaculty() throws Exception {
-
-        Faculty faculty = new Faculty();
-        faculty.setId(22L);
-        faculty.setColor("Green");
-        faculty.setName("Greenfield");
-
-        student1.setId(id);
-        student1.setName(name1);
-        student1.setAge(age1);
-        student1.setFaculty(faculty);
-
-        Assertions
-                .assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/faculty/22", List.class))
-                .isNotEmpty();
-    }
+//    @Test
+//    public void testGetStudentByAge() throws Exception {
+//
+//        student1.setId(id);
+//        student1.setName(name1);
+//        student1.setAge(age1);
+//
+//        Assertions
+//                .assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/student/age/23", List.class))
+//                .isNotEmpty();
+//    }
+//
+//    @Test
+//    public void testGetStudentByAgeBetweenMinAndMax() throws Exception {
+//
+//        student1.setId(id);
+//        student1.setName(name1);
+//        student1.setAge(age1);
+//
+//        Assertions
+//                .assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/student", List.class, "minAge", 0, "maxAge",1000))
+//                .isNotEmpty();
+//    }
+//
+//    @Test
+//    public void testGetStudentFaculty() throws Exception {
+//
+//        Faculty faculty = new Faculty();
+//        faculty.setId(22L);
+//        faculty.setColor("Green");
+//        faculty.setName("Greenfield");
+//
+//        student1.setId(id);
+//        student1.setName(name1);
+//        student1.setAge(age1);
+//        student1.setFaculty(faculty);
+//
+//        Assertions
+//                .assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/faculty/22", List.class))
+//                .isNotEmpty();
+//    }
 }
