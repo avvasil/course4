@@ -280,49 +280,49 @@ public class FacultyControllerTests {
 
     }
 
-    @Test
-    public void testfindFacultyByStudentsIsContaining() throws Exception {
-
-        long facultyId = 22L;
-        String name = "Greenfield";
-        String color = "Green";
-
-        long id = 1L;
-        String studentName = "John";
-        int studentAge = 90;
-
-
-        Faculty faculty = new Faculty();
-        faculty.setId(facultyId);;
-        faculty.setName(name);
-        faculty.setColor(color);
-
-        Student student = new Student();
-        student.setId(id);
-        student.setName(studentName);
-        student.setAge(studentAge);
-        student.setFaculty(faculty);
-
-        JSONObject studentObject = new JSONObject();
-        studentObject.put("id", id);
-        studentObject.put("studentName", studentName);
-        studentObject.put("studentAge", studentAge);
-        studentObject.put("faculty", faculty);
-
-        when(facultyRepository.findFacultyByStudentsIsContaining(any(Student.class))).thenReturn(faculty.getId());
-
-        this.mockMvc.perform(MockMvcRequestBuilders //Get Faculty By Student
-                        .get("/faculty/student/{student}", student)
-                        .content(studentObject.toString())
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.color").value(color));
-    }
-
-    public static Student valueOf(String json) throws IOException
-    {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(json, Student.class);
-    }
+//    @Test
+//    public void testfindFacultyByStudentsIsContaining() throws Exception {
+//
+//        long facultyId = 22L;
+//        String name = "Greenfield";
+//        String color = "Green";
+//
+//        long id = 1L;
+//        String studentName = "John";
+//        int studentAge = 90;
+//
+//
+//        Faculty faculty = new Faculty();
+//        faculty.setId(facultyId);;
+//        faculty.setName(name);
+//        faculty.setColor(color);
+//
+//        Student student = new Student();
+//        student.setId(id);
+//        student.setName(studentName);
+//        student.setAge(studentAge);
+//        student.setFaculty(faculty);
+//
+//        JSONObject studentObject = new JSONObject();
+//        studentObject.put("id", id);
+//        studentObject.put("studentName", studentName);
+//        studentObject.put("studentAge", studentAge);
+//        studentObject.put("faculty", faculty);
+//
+//        when(facultyRepository.findFacultyByStudentsIsContaining(any(Student.class))).thenReturn(faculty.getId());
+//
+//        this.mockMvc.perform(MockMvcRequestBuilders //Get Faculty By Student
+//                        .get("/faculty/student/{student}", student)
+//                        .content(studentObject.toString())
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$.color").value(color));
+//    }
+//
+//    public static Student valueOf(String json) throws IOException
+//    {
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        return objectMapper.readValue(json, Student.class);
+//    }
 }
