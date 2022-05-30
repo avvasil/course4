@@ -89,4 +89,14 @@ public class StudentController {
     public double getStudentsAvgAge() {
         return studentService.getStudentsAvgAge();
     }
+
+    @GetMapping("/getAllStudentInThreeThreads")
+    public void getAllStudentInThreeThreads() {
+        studentService.getAllStudentInThreeThreads();
+    }
+
+    @GetMapping("/getAllStudentSync")
+    public void getAllStudentInThreeThreadsSynchronized() {
+        studentService.getAllStudentSync();
+    }
 }

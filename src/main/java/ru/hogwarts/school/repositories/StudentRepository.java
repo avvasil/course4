@@ -18,6 +18,8 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     Collection<Student> findStudentByFacultyId(Long faculty_id);
 
+    Student getById(Long studentId);
+
     @Query(value = "SELECT COUNT(*) FROM hogwarts.public.student", nativeQuery = true)
     Long getAllStudentsUsingQuery();
 

@@ -6,8 +6,7 @@ import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repositories.StudentRepository;
 
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,19 +24,23 @@ public class StudentService {
         studentRepository.save(student);
         return student;
     }
+
     public Student getStudentById(Long studentId) {
         logger.info("Was invoked method for getting student by ID");
         return studentRepository.findById(studentId).get();
     }
+
     public Student updateStudent(Long studentId, Student student) {
         logger.info("Was invoked method for updating student by ID");
         studentRepository.save(student);
         return student;
     }
+
     public void deleteStudent(Long studentId) {
         logger.info("Was invoked method for delete student by ID");
         studentRepository.deleteById(studentId);
     }
+
     public Collection<Student> findByAge(int age) {
         logger.info("Was invoked method for getting student by age");
         return studentRepository.findByAge(age);
@@ -75,12 +78,59 @@ public class StudentService {
                 .map(String::toUpperCase)
                 .sorted().filter(e -> e.startsWith("H"))//В моей БД нет имён, начинающихся с "А"
                 .collect(Collectors.toList());
-
     }
 
     public double getStudentsAvgAge() {
         return studentRepository.findAll().stream()
                 .mapToInt(Student::getAge).average().getAsDouble();
+    }
+
+    public void getAllStudentInThreeThreads() {
+
+        Thread thread1 = new Thread(() -> {
+            printStudentName(3L);
+            printStudentName(4L);
+        });
+
+        Thread thread2 = new Thread(() -> {
+            printStudentName(5L);
+            printStudentName(6L);
+        });
+
+        printStudentName(1L);
+        printStudentName(2L);
+
+        thread1.start();
+        thread2.start();
+    }
+
+    public void getAllStudentSync() {
+
+        Thread thread3 = new Thread(() -> {
+            printStudentNameSync(3L);
+            printStudentNameSync(4L);
+        });
+
+        Thread thread4 = new Thread(() -> {
+            printStudentNameSync(5L);
+            printStudentNameSync(6L);
+        });
+
+        printStudentNameSync(1L);
+        printStudentNameSync(2L);
+
+        thread3.start();
+        thread4.start();
+    }
+
+    public void printStudentName(Long id) {
+        String studentName = studentRepository.getById(id).getName();
+        System.out.println(studentName);
+    }
+
+    public synchronized void printStudentNameSync(Long id) {
+        String studentName = studentRepository.getById(id).getName();
+        System.out.println(studentName);
     }
 
 }

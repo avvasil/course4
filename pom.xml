@@ -11,8 +11,8 @@
     <groupId>ru.hogwarts</groupId>
     <artifactId>school</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>homework4.5</name>
-    <description>homework4.5</description>
+    <name>homework4.6</name>
+    <description>homework4.6</description>
     <properties>
         <java.version>11</java.version>
     </properties>
