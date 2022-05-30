@@ -1,6 +1,5 @@
 package ru.hogwarts.school.service;
 
-import jdk.dynalink.linker.LinkerServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -9,6 +8,7 @@ import ru.hogwarts.school.repositories.StudentRepository;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -66,6 +66,21 @@ public class StudentService {
     public List<Student> getFiveLastStudents() {
         logger.info("Was invoked method for getting 5 last students");
         return studentRepository.getFiveLastStudents();
+    }
+
+    public List<String> getAStudents() {
+        return studentRepository.findAll().stream()
+                .map(Student::getName)
+                .map(String::new)
+                .map(String::toUpperCase)
+                .sorted().filter(e -> e.startsWith("H"))//В моей БД нет имён, начинающихся с "А"
+                .collect(Collectors.toList());
+
+    }
+
+    public double getStudentsAvgAge() {
+        return studentRepository.findAll().stream()
+                .mapToInt(Student::getAge).average().getAsDouble();
     }
 
 }
